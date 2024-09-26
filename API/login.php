@@ -1,15 +1,24 @@
 <?php 
     require 'dbCon.php';
 
+    // header("Content-Type: application/json");
+
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $json = file_get_contents('PHP://INPUT');
-        $parsed = json_decode($json);
-        $username = $parsed -> username;
-        $password = $parsed -> password;
-
 
         try{
+            $parsed = json_decode($json, true);
+            
+            if($parsed == null || !$parsed){
+                http_response_code(400);
+                throw new Exception('The request body is empty'); 
+            }
+
+            $username = $parsed['username'] ?? null;
+            $password = $parsed['password'] ?? null;
+
             if(!$password || !$username){
+                http_response_code(400);
                 throw new Exception('username or password is empty in the body request');
             }
 
@@ -20,16 +29,22 @@
 
             $result = $stmt -> get_result();
             $row = $result -> fetch_assoc();
+            if(!$row){
+                http_response_code(401);
+                throw new Exception('Unauthorized');
+            }
 
             $response = array('ID' => $row['ID']);
 
-            header("Content-Type: application/json");
             echo json_encode($response);
 
         }catch(Exception $e){
-            http_response_code(400);
-            echo('there is something wrong');
-            echo('error code ->'.$e);
+            $responseError = array('message' => $e -> getMessage(), 'response code' => http_response_code());
+            echo json_encode($responseError);
         }
+    }else{
+        http_response_code(405);
+        $responseError = array('message' => 'Method Not Allowed', 'response code' => http_response_code());
+        echo json_encode($responseError);
     }
 ?>
