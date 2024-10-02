@@ -1,5 +1,6 @@
 <?php 
     require "dbCon.php";
+
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $json = file_get_contents('php://input');
 
@@ -35,7 +36,8 @@
 
             $tanggalLahir = strtotime($tanggalLahir);
             $tanggalLahir = date('Y-m-d', $tanggalLahir);
-            
+
+            $password = password_hash($password, PASSWORD_BCRYPT);
 
             #start the transaction 
             $conn -> begin_transaction();

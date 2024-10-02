@@ -1,8 +1,6 @@
 <?php 
     require 'dbCon.php';
 
-    // header("Content-Type: application/json");
-
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $json = file_get_contents('PHP://INPUT');
 
@@ -17,13 +15,13 @@
             $username = $parsed['username'] ?? null;
             $password = $parsed['password'] ?? null;
 
-            if(!$password || !$username){
+            if(!$password || !$username || $password == '' || $username  == ''){
                 http_response_code(400);
                 throw new Exception('username or password is empty in the body request');
             }
 
-            $stmt = $conn -> prepare("SELECT `ID` FROM `users` WHERE `username` = ? AND `password` = ?");
-            $stmt -> bind_param('ss', $username, $password);
+            $stmt = $conn -> prepare("SELECT `ID`,  'password' FROM `users` WHERE `username` = ? LIMIT 1;");
+            $stmt -> bind_param('s', $username);
 
             $stmt -> execute();
 
@@ -31,7 +29,12 @@
             $row = $result -> fetch_assoc();
             if(!$row){
                 http_response_code(401);
-                throw new Exception('Unauthorized');
+                throw new Exception('User not Found');
+            }
+
+            if(!password_verify($password, $row['password'])){
+                http_response_code(401);
+                throw new Exception('Wrong Password, Unauthorized');
             }
 
             $response = array('ID' => $row['ID']);
