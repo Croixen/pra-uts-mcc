@@ -1,6 +1,3 @@
-2024/09/28-22:04:08.936 44cc Creating DB C:\Users\Pengu\AppData\Local\Temp\flutter_tools.c0b191c2\flutter_tools_chrome_device.3de32560\Default\IndexedDB\devtools_devtools_0.indexeddb.leveldb since it was missing.
-2024/09/28-22:04:08.947 44cc Reusing MANIFEST C:\Users\Pengu\AppData\Local\Temp\flutter_tools.c0b191c2\flutter_tools_chrome_device.3de32560\Default\IndexedDB\devtools_devtools_0.indexeddb.leveldb/MANIFEST-000001
-2024/09/28-22:04:41.367 376c Level-0 table #5: started
-2024/09/28-22:04:41.371 376c Level-0 table #5: 1009 bytes OK
-2024/09/28-22:04:41.375 376c Delete type=0 #3
-2024/09/28-22:04:41.376 376c Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2024/10/02-20:29:20.162 2d3c Reusing MANIFEST C:\Users\Pengu\AppData\Local\Temp\flutter_tools.9cee5036\flutter_tools_chrome_device.188eaca9\Default\IndexedDB\devtools_devtools_0.indexeddb.leveldb/MANIFEST-000001
+2024/10/02-20:29:20.163 2d3c Recovering log #4
+2024/10/02-20:29:20.163 2d3c Reusing old log C:\Users\Pengu\AppData\Local\Temp\flutter_tools.9cee5036\flutter_tools_chrome_device.188eaca9\Default\IndexedDB\devtools_devtools_0.indexeddb.leveldb/000004.log 

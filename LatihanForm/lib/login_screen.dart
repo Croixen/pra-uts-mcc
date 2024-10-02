@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:statefulclickcounter/definitions.dart';
+import 'package:statefulclickcounter/registration.dart';
 import 'package:statefulclickcounter/welcome.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -18,11 +19,11 @@ class _LoginScreen extends State<LoginScreen> {
   void handleLogin() async {
     try {
       final credential = LoginCredential(username, password);
-      print(jsonEncode(credential));
       final url = Uri.parse('http://localhost/API/login.php');
       final response = await http.post(url, body: jsonEncode(credential));
-      if (response.statusCode == 401) {
-        throw Exception('Unauthroized');
+      if (response.statusCode != 200) {
+        final responseBody = jsonDecode(response.body);
+        throw Exception(responseBody['message']);
       } else if (response.statusCode == 200 && mounted) {
         Navigator.push(context,
             MaterialPageRoute(builder: (context) => const WelcomeScreen()));
@@ -89,6 +90,16 @@ class _LoginScreen extends State<LoginScreen> {
               },
               icon: const Icon(Icons.login),
               label: const Text('Login'),
+            ),
+            ElevatedButton.icon(
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const RegistrationForm()));
+              },
+              icon: const Icon(Icons.add),
+              label: const Text('Registration'),
             )
           ],
         ));

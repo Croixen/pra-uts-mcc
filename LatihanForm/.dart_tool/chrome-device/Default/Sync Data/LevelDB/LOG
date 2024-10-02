@@ -1,8 +1,6 @@
-2024/09/28-21:30:38.425 438c Creating DB C:\Users\Pengu\AppData\Local\Temp\flutter_tools.c0b191c2\flutter_tools_chrome_device.3de32560\Default\Sync Data\LevelDB since it was missing.
-2024/09/28-21:30:38.454 438c Reusing MANIFEST C:\Users\Pengu\AppData\Local\Temp\flutter_tools.c0b191c2\flutter_tools_chrome_device.3de32560\Default\Sync Data\LevelDB/MANIFEST-000001
-2024/09/28-21:31:49.843 3254 Level-0 table #5: started
-2024/09/28-21:31:49.900 3254 Level-0 table #5: 959250 bytes OK
-2024/09/28-21:31:49.905 3254 Delete type=0 #3
-2024/09/28-22:09:20.682 21fc Level-0 table #7: started
-2024/09/28-22:09:20.693 21fc Level-0 table #7: 153064 bytes OK
-2024/09/28-22:09:20.703 21fc Delete type=0 #4
+2024/10/02-20:27:16.128 3c50 Reusing MANIFEST C:\Users\Pengu\AppData\Local\Temp\flutter_tools.9cee5036\flutter_tools_chrome_device.188eaca9\Default\Sync Data\LevelDB/MANIFEST-000001
+2024/10/02-20:27:16.128 3c50 Recovering log #6
+2024/10/02-20:27:16.130 3c50 Reusing old log C:\Users\Pengu\AppData\Local\Temp\flutter_tools.9cee5036\flutter_tools_chrome_device.188eaca9\Default\Sync Data\LevelDB/000006.log 
+2024/10/02-20:42:25.165 4414 Level-0 table #10: started
+2024/10/02-20:42:25.170 4414 Level-0 table #10: 114456 bytes OK
+2024/10/02-20:42:25.174 4414 Delete type=0 #6
